@@ -1,0 +1,9 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+* {
+  margin: 0;
+}

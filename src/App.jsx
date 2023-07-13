@@ -1,11 +1,12 @@
 import "./App.css";
-import CardMarket from "./components/carMarket/CardMarket";
+import Card from "./components/card/Card";
+import Content from "./components/content/Content";
 
 function App() {
   return (
-    <>
-      <CardMarket />
-    </>
+    <Card>
+      <Content />
+    </Card>
   );
 }
 

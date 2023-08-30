@@ -34,7 +34,7 @@ function App() {
 
   function changeProductTitle(newTitle = "", products) {}
 
-  function deleteProduct() {}
+  function deleteProduct(products, index = 0) {}
 
   return (
     <div className={classes.root}>

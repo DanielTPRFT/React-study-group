@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Card from "./components/card/Card";
-import objects from "./mockData/MockData";
+import storedProducts from "./mockData/MockData";
 import classes from "./App.module.css";
 import { NextButton } from "./components/next-button/NextButton";
 import { Options } from "./components/options/Options";
@@ -13,7 +13,7 @@ function App() {
   const [index, setIndex] = useState(0);
   const [isSessionRegistered, setIsSessionRegistered] = useState(false);
 
-  const [products, setProducts] = useState(objects);
+  const [products, setProducts] = useState(storedProducts);
   const [areOptionsVisible, setAreOptionsVisible] = useState(false);
 
   let product = products[index];

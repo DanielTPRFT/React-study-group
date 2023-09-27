@@ -1,7 +1,7 @@
 import { Discount } from "../discount/Discount";
 import classes from "./Card.module.css";
 
-const Card = ({
+function Card({
   index,
   image,
   title,
@@ -9,8 +9,8 @@ const Card = ({
   description,
   onClick,
   bgImage,
-  bgContent,
-}) => {
+  bgContent
+}) {
   return (
     <div className={classes.card} style={{ backgroundColor: bgContent }}>
       {price > 3000 && <Discount />}
@@ -31,6 +31,6 @@ const Card = ({
       </div>
     </div>
   );
-};
+}
 
 export default Card;

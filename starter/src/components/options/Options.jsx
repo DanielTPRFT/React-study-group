@@ -1,11 +1,11 @@
 import { useState } from "react";
 import classes from "./options.module.css";
 
-export function Options({ onDelete, onTitleChange }) {
+export function Options({ onDelete, onTitleChange, products }) {
   const [inputValue, setInputValue] = useState("");
 
-  function handleTitleChange(value) {
-    onTitleChange(value);
+  function handleTitleChange(value, products) {
+    onTitleChange(value, products);
   }
 
   function handleDelete() {
@@ -27,7 +27,7 @@ export function Options({ onDelete, onTitleChange }) {
           Delete
         </button>
         <button
-          onClick={() => handleTitleChange(inputValue)}
+          onClick={() => handleTitleChange(inputValue, products)}
           className={classes.infoButton}
         >
           Change

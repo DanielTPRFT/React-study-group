@@ -6,7 +6,7 @@ const storedProducts = [
     price: 3200,
     image: "https://img.icons8.com/?size=512&id=p7YHa8almDEQ&format=png",
     bgImage: "#edad15",
-    bgContent: "#f2d852",
+    bgContent: "#f2d852"
   },
   {
     title: "Beans",
@@ -15,7 +15,7 @@ const storedProducts = [
     price: 5600,
     image: "https://img.icons8.com/?size=512&id=W7enEEyoySsv&format=png",
     bgImage: "#9F5358",
-    bgContent: "#D9969B",
+    bgContent: "#D9969B"
   },
   {
     title: "Pizza",
@@ -24,7 +24,7 @@ const storedProducts = [
     price: 8000,
     image: "https://img.icons8.com/?size=512&id=CYgFsQyxgTod&format=png",
     bgImage: "#F2600C",
-    bgContent: "#FC9F38",
+    bgContent: "#FC9F38"
   },
   {
     title: "Avocado",
@@ -33,7 +33,7 @@ const storedProducts = [
     price: 1600,
     image: "https://img.icons8.com/?size=512&id=9Dv8Wi1vh0yp&format=png",
     bgImage: "#8CA653",
-    bgContent: "#EFF285",
+    bgContent: "#EFF285"
   },
   {
     title: "Tomato",
@@ -42,8 +42,8 @@ const storedProducts = [
     price: 1800,
     image: "https://img.icons8.com/?size=512&id=lPmL0NaypRwo&format=png",
     bgImage: "#E14B13",
-    bgContent: "#EE9C82",
-  },
+    bgContent: "#EE9C82"
+  }
 ];
 
 export default storedProducts;

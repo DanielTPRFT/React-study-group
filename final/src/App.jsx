@@ -5,6 +5,8 @@ import classes from "./App.module.css";
 import { NextButton } from "./components/next-button/NextButton";
 import { Options } from "./components/options/Options";
 import { ThemeContext } from "./context/theme";
+import { productsReducer } from "./app-logic";
+import { useRef } from "react";
 
 function registerSession() {
   console.log(`This user has entered the app at ${new Date()}`);
@@ -16,59 +18,35 @@ function App() {
   const [isSessionRegistered, setIsSessionRegistered] = useState(false);
   const [areOptionsVisible, setAreOptionsVisible] = useState(false);
 
-  const reducer = (products, action) => {
-    switch (action.type) {
-      case "DELETE_PRODUCT": {
-        let newProducts = [
-          ...products.slice(0, index),
-          ...products.slice(index + 1, products.length)
-        ];
-        if (index > newProducts.length - 1) setIndex(0);
-        return newProducts;
-      }
-      case "CHANGE_NAME": {
-        const updatedProducts = structuredClone(products);
-        updatedProducts[index] = {
-          ...updatedProducts[index],
-          title: action.value
-        };
-        console.log(updatedProducts);
-        return updatedProducts;
-      }
-      case "NEXT_PRODUCT": {
-        index < products.length - 1 ? setIndex(index + 1) : setIndex(0);
-        return products;
-      }
-      case "PREV_PRODUCT": {
-        index > 0 ? setIndex(index - 1) : setIndex(products.length - 1);
-        return products;
-      }
-      default: {
-        console.log(`I guess I have no more actions`);
-      }
-    }
-  };
+  const [products, dispatch] = useReducer(productsReducer, storedProducts);
+  const inputRef = useRef();
 
-  const [state, dispatch] = useReducer(reducer, storedProducts);
   const deleteProduct = () =>
     dispatch({
-      type: "DELETE_PRODUCT"
+      type: "DELETE_PRODUCT",
+      index,
+      setIndex,
     });
   const changeProductValue = (value) =>
     dispatch({
       type: "CHANGE_NAME",
-      value
+      value,
+      index,
     });
   const onNextClick = () =>
     dispatch({
-      type: "NEXT_PRODUCT"
+      type: "NEXT_PRODUCT",
+      index,
+      setIndex,
     });
   const onPrevClick = () =>
     dispatch({
-      type: "PREV_PRODUCT"
+      type: "PREV_PRODUCT",
+      index,
+      setIndex,
     });
 
-  let product = state[index];
+  let product = products[index];
 
   if (!isSessionRegistered) {
     registerSession();
@@ -81,6 +59,7 @@ function App() {
 
   function toggleOptionsVisibility() {
     setAreOptionsVisible(!areOptionsVisible);
+    inputRef.current.focus();
   }
 
   return (
@@ -110,13 +89,12 @@ function App() {
       >
         {areOptionsVisible ? "Hide Options" : "Show Options"}
       </button>
-      {areOptionsVisible && (
-        <Options
-          onDelete={() => deleteProduct(storedProducts, index)}
-          onTitleChange={changeProductValue}
-          products={storedProducts}
-        />
-      )}
+      <Options
+        onDelete={() => deleteProduct(storedProducts, index)}
+        onTitleChange={changeProductValue}
+        products={storedProducts}
+        ref={inputRef}
+      />
     </div>
   );
 }
